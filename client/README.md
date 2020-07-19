@@ -8,6 +8,7 @@ npm install --save express
 npm install nodemon --save-dev
 npm install body-parser --save
 npm install mongose --save
+npm install body-parser
 
 ## Available Scripts
 

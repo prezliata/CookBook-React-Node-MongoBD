@@ -7,6 +7,9 @@ const cors = require("cors");
 //set up express app
 const app = express();
 
+app.use(bodyParser.json(), cors());
+app.use(bodyParser.urlencoded({ extended: true }));
+
 //connect to MongoAtlas
 const MongoClient = require('mongodb').MongoClient;
 const path = require('path');
@@ -45,10 +48,6 @@ app.get('/api', (req, res) => {
 //connect to mongoDB local
 // mongoose.connect('mongodb://localhost/cookBook', {useUnifiedTopology: true, useNewUrlParser: true, useFindAndModify: false});
 mongoose.Promise = global.Promise;
-
-app.use(bodyParser.json())
-
-app.use(cors())
 
 //initialize routes
 app.use('/api', routes)
