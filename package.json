@@ -1,0 +1,26 @@
+{
+  "name": "recipeapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "serve": "nodemon index.js",
+    "heroku-postbuild": "cd client && npm install && npm run build"
+  },
+  "engines": {
+    "node": "14.5.0"
+  },
+  "proxy": "http://localhost:4000/",
+  "author": "Taras",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongose": "0.0.2-security"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
