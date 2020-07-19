@@ -1,14 +1,14 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-npm install @material-ui/core
-npm install @material-ui/icons
-npm install axios
+### `npm install @material-ui/core`
+### `npm install @material-ui/icons`
+### `npm install axios`
 
-npm install --save express
-npm install nodemon --save-dev
-npm install body-parser --save
-npm install mongoose --save
-npm install body-parser
+### `npm install --save express`
+### `npm install nodemon --save-dev`
+### `npm install body-parser --save`
+### `npm install mongoose --save`
+### `npm install body-parser`
 
 ## Available Scripts
 
