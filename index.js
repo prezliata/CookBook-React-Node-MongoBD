@@ -10,7 +10,7 @@ const app = express();
 //connect to MongoAtlas
 const MongoClient = require('mongodb').MongoClient;
 const path = require('path');
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 5000;
 const MongoAtlasURL = 'mongodb+srv://Taras:Qaz123@cluster0-xhxir.mongodb.net/cookBook?retryWrites=true&w=majority';
 const SERVER = '127.0.0.1:27017';
 const DB = 'cookBook';
@@ -19,7 +19,10 @@ const connection = mongoose.connection;
 const option = {
 	socketTimeoutMS: 30000,
 	keepAlive: true,
-	reconnectTries: 30000
+	reconnectTries: 30000,
+	useUnifiedTopology: true,
+	useNewUrlParser: true,
+	useFindAndModify: false
 };
 
 MongoClient.connect(MongoAtlasURL, (err, client) => {
@@ -34,9 +37,9 @@ MongoClient.connect(MongoAtlasURL, (err, client) => {
 mongoose.Promise = Promise;
 mongoose.connect(MongoAtlasURL, option);
 
-app.use(express.static(path.join(__dirname, '/client/build')));
+app.use(express.static(path.join(__dirname, './client/build')));
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname + '/client/build/index.html'));
+    res.sendFile(path.join(__dirname + './client/build/index.html'));
 });
 
 //connect to mongoDB local
@@ -56,6 +59,6 @@ app.use((err, req, res, next) => {
 })
 
 //listen for requests
-app.listen(process.env.port || 4000, function(){
+app.listen(PORT, function(){
     console.log('now listening for request')
 })
