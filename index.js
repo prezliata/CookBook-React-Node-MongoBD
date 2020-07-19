@@ -41,7 +41,7 @@ mongoose.Promise = Promise;
 mongoose.connect(MongoAtlasURL, option);
 
 app.use(express.static(path.join(__dirname, '/client/build')));
-app.get('/api', (req, res) => {
+app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname + '/client/build/index.html'));
 });
 
@@ -50,7 +50,7 @@ app.get('/api', (req, res) => {
 mongoose.Promise = global.Promise;
 
 //initialize routes
-app.use('/api', routes)
+app.use('/', routes)
 
 //error handling middleware
 app.use((err, req, res, next) => {
