@@ -1,6 +1,11 @@
 const express = require("express");
 const router = express.Router();
-const RecipeItem = require("../models/recipeItem")
+const RecipeItem = require("../models/recipeItem");
+const path = require('path');
+
+router.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname + '/client/build/index.html'));
+});
 
 router.get('/recipeList', (req, res, next) => {
     RecipeItem.find((err, recipeItem) => {

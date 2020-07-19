@@ -15,10 +15,7 @@ const MongoClient = require('mongodb').MongoClient;
 const path = require('path');
 const PORT = process.env.PORT || 5000;
 const MongoAtlasURL = 'mongodb+srv://Taras:Qaz123@cluster0-xhxir.mongodb.net/cookBook?retryWrites=true&w=majority';
-const SERVER = '127.0.0.1:27017';
-const DB = 'cookBook';
-const MONGODB_URI = `mongodb://${SERVER}/${DB}`;
-const connection = mongoose.connection;
+
 const option = {
 	socketTimeoutMS: 30000,
 	keepAlive: true,
@@ -39,15 +36,9 @@ MongoClient.connect(MongoAtlasURL, (err, client) => {
 
 mongoose.Promise = Promise;
 mongoose.connect(MongoAtlasURL, option);
+mongoose.Promise = global.Promise;
 
 app.use(express.static(path.join(__dirname, '/client/build')));
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname + '/client/build/index.html'));
-});
-
-//connect to mongoDB local
-// mongoose.connect('mongodb://localhost/cookBook', {useUnifiedTopology: true, useNewUrlParser: true, useFindAndModify: false});
-mongoose.Promise = global.Promise;
 
 //initialize routes
 app.use('/', routes)

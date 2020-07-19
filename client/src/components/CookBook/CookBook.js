@@ -28,7 +28,6 @@ class CookBook extends Component {
 
 	getRecipeList = () => {
 		axios
-		// .get('http://localhost:4000/api/recipeList')
 		.get('/recipeList')
 		.then((response) => {
 			this.setState({
@@ -44,7 +43,6 @@ class CookBook extends Component {
 	handleDelete = (e) => {
 		let id = e.target.parentNode.getAttribute("data-id");
 		axios
-		// .delete(`http://localhost:4000/api/recipeList/${id}`)
 		.delete(`/recipeList/${id}`)
 		.then(() => {
 			this.getRecipeList();
@@ -73,7 +71,6 @@ class CookBook extends Component {
 		const id = this.state.selectedtId
 		if (isEdit === true) {
 			axios
-			// .put(`http://localhost:4000/api/recipeList/${id}`,{title: this.state.title, description: this.state.description})
 			.put(`/recipeList/${id}`,{title: this.state.title, description: this.state.description})
 			.then(res => {
 				console.log(res);
@@ -146,7 +143,6 @@ class CookBook extends Component {
 		};
 		if (isEdit === false) {
 			axios
-			// .post(`http://localhost:4000/api/recipeList/`, newRecipe)
 			.post(`/recipeList/`, newRecipe)
 			.then(res => {
 				this.getRecipeList();
